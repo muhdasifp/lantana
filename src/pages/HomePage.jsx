@@ -57,7 +57,7 @@ function HomePage() {
 
         {/* Amenities Section - Aqua Spring */}
         <div id="amenities" className="pt-20">
-          <div className="container mx-auto px-4 text-center mb-12">
+          <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1B5E5E] font-serif uppercase tracking-widest">
               OUR AMENITIES
             </h2>
@@ -70,16 +70,9 @@ function HomePage() {
           {/* Aqua Dine Section */}
           <AquaDineSection />
 
-           <LantanaAquaSpringSection />
-
+          <LantanaAquaSpringSection />
 
         </div>
-
-
-
-       
-
-
 
 
         {/* Income Returning Section */}

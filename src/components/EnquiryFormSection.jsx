@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
@@ -31,7 +30,7 @@ export default function EnquiryFormSection() {
     if (!formData.name || !formData.phone || !formData.email) {
       toast({
         title: "Missing Information",
-        description: "Please fill in all required fields (Name, Phone, Email).",
+        description: "Please fill in all required fields.",
         variant: "destructive"
       });
       return;
@@ -43,7 +42,7 @@ export default function EnquiryFormSection() {
       setIsSubmitting(false);
       toast({
         title: "Enquiry Submitted Successfully",
-        description: "Our team will get back to you shortly.",
+        description: "Our team will contact you soon.",
         className: "bg-[#1B5E5E] text-white border-none"
       });
       setFormData({ name: '', phone: '', email: '', message: '' });
@@ -51,114 +50,135 @@ export default function EnquiryFormSection() {
   };
 
   return (
-    <section id="enquiry-form" className="px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-        
-        {/* Left Column: Form */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
+    <section
+      id="enquiry-form"
+      className="px-4 sm:px-6 lg:px-8 py-16 md:py-20 max-w-7xl mx-auto"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+        {/* LEFT - FORM */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 sticky top-32"
+          className="
+            bg-white 
+            p-6 sm:p-8 md:p-10 
+            rounded-2xl md:rounded-3xl 
+            shadow-xl border border-gray-100
+            
+            lg:sticky lg:top-28
+          "
         >
-          <h2 className="text-3xl font-bold text-[#1B5E5E] font-serif mb-2">Interested in Investing?</h2>
-          <p className="text-gray-600 mb-8">Leave your details below and our team will guide you through our exclusive investment offerings.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#1B5E5E] font-serif mb-2">
+            Interested in Investing?
+          </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
+            Leave your details and our team will guide you through our offerings.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-gray-700">Full Name *</Label>
-              <Input 
-                id="name" 
-                name="name" 
-                type="text" 
-                placeholder="Your Full Name" 
-                value={formData.name} 
-                onChange={handleChange} 
-                className="bg-gray-50 text-gray-900 border-gray-200 focus-visible:ring-[#1B5E5E] focus-visible:bg-white transition-colors"
+              <Label>Full Name *</Label>
+              <Input
+                name="name"
+                placeholder="Your Full Name"
+                value={formData.name}
+                onChange={handleChange}
                 disabled={isSubmitting}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-gray-700">Phone Number *</Label>
-              <Input 
-                id="phone" 
-                name="phone" 
-                type="tel" 
-                placeholder="Your Phone Number" 
-                value={formData.phone} 
-                onChange={handleChange} 
-                className="bg-gray-50 text-gray-900 border-gray-200 focus-visible:ring-[#1B5E5E] focus-visible:bg-white transition-colors"
+              <Label>Phone Number *</Label>
+              <Input
+                name="phone"
+                type="tel"
+                placeholder="Your Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
                 disabled={isSubmitting}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-700">Email Address *</Label>
-              <Input 
-                id="email" 
-                name="email" 
-                type="email" 
-                placeholder="your@email.com" 
-                value={formData.email} 
-                onChange={handleChange} 
-                className="bg-gray-50 text-gray-900 border-gray-200 focus-visible:ring-[#1B5E5E] focus-visible:bg-white transition-colors"
+              <Label>Email Address *</Label>
+              <Input
+                name="email"
+                type="email"
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={handleChange}
                 disabled={isSubmitting}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message" className="text-gray-700">Message (Optional)</Label>
-              <Textarea 
-                id="message" 
-                name="message" 
-                placeholder="How can we help you?" 
-                value={formData.message} 
-                onChange={handleChange} 
-                className="bg-gray-50 text-gray-900 border-gray-200 focus-visible:ring-[#1B5E5E] focus-visible:bg-white transition-colors min-h-[100px]"
+              <Label>Message</Label>
+              <Textarea
+                name="message"
+                placeholder="How can we help you?"
+                value={formData.message}
+                onChange={handleChange}
                 disabled={isSubmitting}
+                className="min-h-[90px]"
               />
             </div>
 
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={isSubmitting}
-              className="w-full py-6 text-lg font-bold bg-[#C9A961] hover:bg-[#b08f45] text-white shadow-lg hover:shadow-xl transition-all duration-300 uppercase tracking-wide flex items-center justify-center gap-2 mt-4"
+              className="
+                w-full 
+                py-5 sm:py-6 
+                text-base sm:text-lg 
+                font-bold 
+                bg-[#C9A961] hover:bg-[#b08f45] 
+                text-white 
+                shadow-lg hover:shadow-xl 
+                transition-all 
+                uppercase
+              "
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  Sending Request...
+                  Sending...
                 </>
               ) : (
                 "Submit Request"
               )}
             </Button>
+
           </form>
         </motion.div>
 
-        {/* Right Column: Images */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
+        {/* RIGHT - IMAGES */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-6 sm:gap-8"
         >
-          <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white">
-            <img 
-              src={uppperShot} 
-              alt="Aerial view of cottage with red tile roof" 
-              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+          {/* Image 1 */}
+          <div className="rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border">
+            <img
+              src={uppperShot}
+              alt="Resort view"
+              className="w-full h-[220px] sm:h-[300px] md:h-auto object-cover hover:scale-105 transition duration-700"
             />
           </div>
-          
-          <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white p-4">
-            <img 
+
+          {/* Image 2 */}
+          <div className="rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border p-3 sm:p-4 bg-white">
+            <img
               src={map}
-              alt="Location map showing distance chart and directions" 
-              className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700"
+              alt="Location map"
+              className="w-full h-[200px] sm:h-[260px] md:h-auto object-cover hover:scale-105 transition duration-700"
             />
           </div>
         </motion.div>
