@@ -8,7 +8,7 @@ import CottageTypesSection from '@/components/CottageTypesSection';
 import AquaDineSection from '@/components/AquaDineSection';
 import IncomeReturningSection from '@/components/IncomeReturningSection';
 import EnquiryFormSection from '@/components/EnquiryFormSection';
-import LantanaClouds from './LantanaCLouds';
+import LantanaClouds from '@/components/LantanaClouds';
 import LantanaAquaSpringSection from '@/components/LantanaAquaSpringSection';
 
 function HomePage() {
